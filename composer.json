@@ -1,0 +1,35 @@
+{
+    "name": "mahmoodr786/cakephp-auth0",
+    "type": "cakephp-plugin",
+    "description": "CakePHP plugin for validating Auth0 JWT token and authenticating the user.",
+    "keywords": [
+        "cakephp",
+        "Auth0",
+        "authenticate",
+        "authentication",
+        "jwt"
+    ],
+    "minimum-stability": "dev",
+    "homepage": "https://github.com/mahmoodr786/cakephp-auth0",
+    "authors": [
+        {
+            "name":"Mahmood Rahimi",
+            "role":"Author",
+            "homepage":"https://icingcms.org"
+        }
+    ],
+    "license": "MIT",
+    "support": {
+        "source":"https://github.com/mahmoodr786/cakephp-auth0",
+        "issues":"https://github.com/mahmoodr786/cakephp-auth0/issues"
+    },
+    "require": {
+        "cakephp/cakephp": "~3.1",
+        "auth0/auth0-php": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mahmoodr786\\AuthZero\\": "src"
+        }
+    }
+}
