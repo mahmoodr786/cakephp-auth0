@@ -72,6 +72,25 @@ class Auth0Authenticate extends BaseAuthenticate
         if (!$this->_config['userModel']) {
             return $decodedToken;
         }
+        $subType = explode('|', $decodedToken->sub);
+        switch ($subType[0]) {
+            case 'auth0':
+                $user = $this->_findUser($subType[1]); //get the id from the token.
+                break;
+            case 'facebook':
+                // Set lookup field.
+                $this->config(['fields' => ['username' => 'external_id']]);
+                // This uses full $decodedToken->sub instead of $subType[1] because in the database the external_id is stored as facebook|1323453453564. This is so I can tell if it is Facebook login or Google.
+                $user = $this->_findUser($decodedToken->sub);
+                break;
+            case 'google-oauth2':
+                $this->config(['fields' => ['username' => 'external_id']]);
+                $user = $this->_findUser($decodedToken->sub);
+                break;
+            default:
+                return false; //type not supported.
+                break;
+        }
         $id = str_replace('auth0|','',$decodedToken->sub); //remove auth0| from sub
         $user = $this->_findUser($id);
 

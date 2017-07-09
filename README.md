@@ -33,3 +33,6 @@ $this->loadComponent('Auth', [
 That is it. Send a request to your app with the Authorization Bearer YourAuth0JWTToken header and you should have access to the user in your app.
 ```php
 debug($this->Auth->user());
+
+### Google and Facebook
+To use Google and Facebook loging set it up using Auth0 add rule to Auth0 and sync the user's credentials in database. Add column to your user table in database called external_id and store the facebook|12323445 or google-oauth2|1234567 id in that field as you get it from Auth0. That should do it.
